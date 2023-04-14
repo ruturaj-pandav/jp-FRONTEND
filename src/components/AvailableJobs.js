@@ -39,7 +39,7 @@ export default function AvailableJobs({ postings }) {
               <div className="my-3 ">
                 <button
                   onClick={() => {
-                    navigate(`/job-information/postingid`);
+                    navigate(`/job-information/${posting._id}`);
                   }}
                   className="w-full border text-white rounded bg-blue-500 capitalize  py-1 hover:bg-blue-600 duration-100 "
                 >

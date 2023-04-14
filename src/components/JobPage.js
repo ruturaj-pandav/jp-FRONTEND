@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import axios from "axios";
+import JobInformation from "./JobInformation";
+import Loggedin_Navbar from "./Loggedin_Navbar";
 export default class componentName extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      postingId: 32,
+      postingId: window.location.href.split("/")[4],
       job: [],
     };
   }
@@ -15,7 +17,7 @@ export default class componentName extends Component {
       console.log("this is postingID : ", this.state.postingId);
 
       let response = await axios.get(
-        `${process.env.REACT_APP_BACKEND_URL}/employers/employer-postings`,
+        `${process.env.REACT_APP_BACKEND_URL}/employees/posting-information/${this.state.postingId}`,
         {
           headers: {
             authorization: `token ${token}`,
@@ -23,7 +25,8 @@ export default class componentName extends Component {
         }
       );
       if (response.status === 200) {
-        this.setState({ postings: response.data });
+        console.log("ye job mila : " , response.data)
+        this.setState({ job: response.data });
       }
     } catch (error) {
       console.log("some error : ", error.message);
@@ -34,6 +37,11 @@ export default class componentName extends Component {
     this.getJobInformation();
   }
   render() {
-    return <div> Job page </div>;
+    return (
+      <div className="container mx-auto">
+        <Loggedin_Navbar />
+        <JobInformation job=  {this.state.job}/>
+      </div>
+    );
   }
 }

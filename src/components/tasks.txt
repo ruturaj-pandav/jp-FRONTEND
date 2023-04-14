@@ -7,9 +7,6 @@ create application
 
 
 
-
-4.	Job Board/Listings page that showcases all available jobs posted by employers.
- .	Use job metadata like job title, posting date, job location, job description, and type of job (full-time, contractual, etc.)
 5.	Single Job page - job detail page that displays the job in full.
  .	Use job metadata like job title, posting date, job location, job description, and type of job (full-time, contractual, etc.)
 6.	Apply for the Job view for the employee user roles.
