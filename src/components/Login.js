@@ -135,7 +135,7 @@ export default function Login() {
                   }}
                   className="bg-indigo-500 text-white py-2 px-3 rounded capitalize"
                 >
-                  create account
+                  Login now
                 </button>
               </div>
             </div>
@@ -179,7 +179,7 @@ export default function Login() {
                   }}
                   className="bg-indigo-500 text-white py-2 px-3 rounded capitalize"
                 >
-                  create account
+                  Login now
                 </button>
               </div>
             </div>
