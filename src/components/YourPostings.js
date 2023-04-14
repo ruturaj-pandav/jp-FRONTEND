@@ -52,10 +52,10 @@ export default function YourPostings({ postings , getPostings }) {
                   {posting.type}
                 </span>
               </div>
-              <div className="flex justify-between my-2">
-                <button className="border-blue-400 py-1  rounded bg-blue-500 text-white w-4/6 text-center capitalize hover:bg-blue-600">
+              <div className="flex flex-row-reverse my-2 py-2">
+                {/* <button className="border-blue-400 py-1  rounded bg-blue-500 text-white w-4/6 text-center capitalize hover:bg-blue-600">
                   view more
-                </button>
+                </button> */}
                 <button
                   onClick={() => {
                     deletePosting(posting._id);

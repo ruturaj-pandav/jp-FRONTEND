@@ -1,6 +1,7 @@
 import React from "react";
 import Loggedout_Navbar from "./Loggedout_Navbar";
 import { useState } from "react";
+import swal from "sweetalert";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 export default function Login() {
@@ -14,12 +15,15 @@ export default function Login() {
   /////
 
   async function EmployeeLogin() {
-    console.log("employee login")
+    console.log("employee login");
     try {
-      let response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/employees/login`, {
-        email,
-        password,
-      });
+      let response = await axios.post(
+        `${process.env.REACT_APP_BACKEND_URL}/employees/login`,
+        {
+          email,
+          password,
+        }
+      );
       if (response) {
         if (response.status === 200) {
           let token = response.data.token;
@@ -30,16 +34,25 @@ export default function Login() {
       }
     } catch (error) {
       console.log("some error in create employee acount", error);
+      swal({
+        title: "Some error",
+        text: error.response.data.message,
+        icon: "error",
+        button: "Ok",
+      });
     }
   }
 
   async function EmployerLogin() {
-    console.log("employer login")
+    console.log("employer login");
     try {
-      let response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/employers/login`, {
-        email,
-        password,
-      });
+      let response = await axios.post(
+        `${process.env.REACT_APP_BACKEND_URL}/employers/login`,
+        {
+          email,
+          password,
+        }
+      );
       if (response) {
         if (response.status === 200) {
           let token = response.data.token;
@@ -50,6 +63,12 @@ export default function Login() {
       }
     } catch (error) {
       console.log("some error in create employer acount");
+      swal({
+        title: "Some error",
+        text: error.response.data.message,
+        icon: "error",
+        button: "Ok",
+      });
     }
   }
   return (
@@ -103,6 +122,7 @@ export default function Login() {
                   onChange={(e) => {
                     setPassword(e.target.value);
                   }}
+                  type="password"
                   className=" outline-none block px-2 py-1 rounded  border  w-full my-2 "
                   placeholder="password"
                 />
@@ -146,6 +166,7 @@ export default function Login() {
                   onChange={(e) => {
                     setPassword(e.target.value);
                   }}
+                  type="password"
                   className=" outline-none block px-2 py-1 rounded  border  w-full my-2 "
                   placeholder="password"
                 />

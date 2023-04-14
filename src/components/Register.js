@@ -2,6 +2,7 @@ import React from "react";
 import Loggedout_Navbar from "./Loggedout_Navbar";
 import { useState } from "react";
 import axios from "axios";
+import swal from "sweetalert";
 import { useNavigate } from "react-router-dom";
 export default function Register() {
   let navigate = useNavigate();
@@ -38,6 +39,12 @@ export default function Register() {
       }
     } catch (error) {
       console.log("some error in create employee acount", error);
+      swal({
+        title: "Some error",
+        text: error.response.data.message,
+        icon: "error",
+        button: "Ok!",
+      });
     }
   }
 
@@ -51,11 +58,18 @@ export default function Register() {
         if (response.status === 200) {
           let token = response.data.token;
           localStorage.removeItem("jobPortal");
-          localStorage.setItem("jobPortal", token); navigate(`/employer-dashboard`);
+          localStorage.setItem("jobPortal", token);
+          navigate(`/employer-dashboard`);
         }
       }
     } catch (error) {
       console.log("some error in create employer acount");
+      swal({
+        title: "Some error",
+        text: error.response.data.message,
+        icon: "error",
+        button: "Ok",
+      });
     }
   }
 
@@ -148,6 +162,7 @@ export default function Register() {
                   onChange={(e) => {
                     setPassword(e.target.value);
                   }}
+                  type="password"
                   className=" outline-none block px-2 py-1 rounded  border  w-full my-2 "
                   placeholder="password"
                 />
@@ -229,6 +244,7 @@ export default function Register() {
                   onChange={(e) => {
                     setPassword(e.target.value);
                   }}
+                  type="password"
                   className=" outline-none block px-2 py-1 rounded  border  w-full my-2 "
                   placeholder="password"
                 />
