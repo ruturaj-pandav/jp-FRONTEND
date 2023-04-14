@@ -1,16 +1,19 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import Logo from "../images/logo.png";
 export default function Register() {
   let navigate = useNavigate();
   function LogoutFunction() {
     console.log("logging out");
     localStorage.removeItem("jobPortal");
-    navigate(`/login`);
+    navigate(`/login`)
   }
   return (
     <div className="py-3 flex justify-between ">
-      <div>logo</div>
-      <div>links</div>
+      <div>
+        <img className="h-12 w-12" src={Logo} alt="My Company Logo" />
+      </div>
+      {/* <div>links</div> */}
       <div>
         <button className="bg-green-400 text-white hover:bg-green-500 py-2 px-3 rounded mx-1 border duration-100 ">
           Profile

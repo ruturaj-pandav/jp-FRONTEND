@@ -42,7 +42,7 @@ export default class EmployeeDashboard extends Component {
       <div className="container mx-auto ">
         <Loggedin_Navbar />
         <AvailableJobs postings={this.state.postings} />
-        <YourApplications applications={this.state.applications} />{" "}
+        {/* <YourApplications applications={this.state.applications} />{" "} */}
       </div>
     );
   }

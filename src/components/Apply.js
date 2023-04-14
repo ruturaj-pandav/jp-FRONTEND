@@ -8,6 +8,7 @@ export default function Apply() {
 
   const { postingId } = useParams();
   async function ApplyFunction() {
+  if (brief!=="") {
     try {
       let token = localStorage.getItem("jobPortal");
       let response = await axios.post(
@@ -28,6 +29,10 @@ export default function Apply() {
     } catch (error) {
       console.log("some error in apply for job function");
     }
+  }
+  else {
+    alert("Please enter a brief note")
+  }
   }
 
   return (

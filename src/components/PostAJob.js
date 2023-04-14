@@ -3,7 +3,7 @@ import axios from "axios";
 import Loggedin_Navbar from "./Loggedin_Navbar";
 import { useNavigate } from "react-router-dom";
 export default function PostAJob() {
-    let navigate = useNavigate();
+  let navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [salary, setSalary] = useState();
   const [minexp, setExp] = useState();
@@ -14,33 +14,48 @@ export default function PostAJob() {
     setType(event.target.value);
   };
   async function PostAJobFunction() {
-    try {
-      let token = localStorage.getItem("jobPortal");
-      let response = await axios.post(
-        `${process.env.REACT_APP_BACKEND_URL}/employers/create-job`,
-        { title, jd, minexp, type, salary, note },
-        {
-          headers: {
-            authorization: `token ${token}`,
-          },
+    if (
+      title !== "" &&
+      salary != "" &&
+      minexp != "" &&
+      jd != "" &&
+      note != "" &&
+      type != ""
+    ) {
+      try {
+        let token = localStorage.getItem("jobPortal");
+        let response = await axios.post(
+          `${process.env.REACT_APP_BACKEND_URL}/employers/create-job`,
+          { title, jd, minexp, type, salary, note },
+          {
+            headers: {
+              authorization: `token ${token}`,
+            },
+          }
+        );
+        if (response) {
+          if (response.status === 200) {
+            console.log("ok i gues");
+            navigate(`/employer-dashboard`);
+          }
         }
-      );
-      if (response) {
-        if (response.status === 200) {
-          console.log("ok i gues")
-          navigate(`/employer-dashboard`)
-        }
+      } catch (error) {
+        console.log("some error in create employer acount");
       }
-    } catch (error) {
-      console.log("some error in create employer acount");
     }
+    else {
+      alert("You need to fill out all the fields")
+    }
+   
   }
 
   return (
     <div>
       <Loggedin_Navbar />
       <div>
-        <span>Create a job</span>
+        <span className="block text-start w-1/3 text-2xl capitalize font-semibold mx-auto ">
+          Create a job
+        </span>
         <div className="border-2 my-8 border-indigo-300 shadow-lg w-5/6 md:w-1/3  mx-auto p-8 ">
           <span className="capitalize   text-start block  mb-5 text-indigo-500  text-2xl   ">
             Please provide the details
@@ -80,7 +95,6 @@ export default function PostAJob() {
                   setSalary(e.target.value);
                 }}
                 className=" outline-none capitalize block px-2 py-1 rounded  border  w-full my-2 "
-                
               />
             </div>
           </div>
