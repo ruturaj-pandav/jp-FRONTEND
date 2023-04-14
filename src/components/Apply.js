@@ -36,7 +36,7 @@ export default function Apply() {
   }
 
   return (
-    <div>
+    <div className="container mx-auto ">
       <Loggedin_Navbar />
       <div>
         <div className=" text-start w-1/3 mx-auto ">
@@ -47,9 +47,9 @@ export default function Apply() {
             Add a note that can help you stand out
           </span>
         </div>
-        <div className="border-2 my-8 border-indigo-300 shadow-lg w-5/6 md:w-1/3  mx-auto p-8 ">
+        <div className="my-8 shadow-lg w-5/6 md:w-1/3  mx-auto p-8 ">
           <span className="capitalize   text-start block  mb-5 text-indigo-500  text-2xl   ">
-            Please provide the details
+           
           </span>
 
           <div>
@@ -74,7 +74,7 @@ export default function Apply() {
               }}
               className="bg-indigo-500 text-white py-2 px-3 rounded capitalize"
             >
-              create account
+              Submit application
             </button>
           </div>
         </div>
